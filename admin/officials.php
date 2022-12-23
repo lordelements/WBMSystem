@@ -175,22 +175,23 @@
 
                         echo 
                         "
-                        <div class='container' style='width:1500px;margin-left:-130px'>
+                        <div class='container' style='width:1550px;margin-left:-200px'>
                         <table class='table table-striped'>
                         <thead>
                         <tr style = 'height: 30px;'>
                         <th style = 'width: 180px;'>Official ID</th>
-                        <th style = 'width: 550px;'>Position</th>
-                        <th style = 'width: 550px;'>Name</th>
+                        <th style = 'width: 150px;'>Position</th>
+                        <th style = 'width: 350px;'>Name</th>
                         <th style = 'width: 150px;'>Gender</th>
                         <th style = 'width: 150px;'>Birthdate</th>
-                        <th style = 'width: 300px;'>CivilStatus</th>
-                        <th style = 'width: 300px;'>Address</th>
+                        <th style = 'width: 150px;'>CivilStatus</th>
+                        <th style = 'width: 450px;'>Address</th>
                         <th style = 'width: 300px;'>Contact</th>
-                        <th style = 'width: 300px;'>ID Card</th>
-                        <th style = 'width: 550px;'>Years of Term</th>
-                        <th style = 'width: 550px;'>Year Started</th>
-                        <th style = 'width: 150px;'>Action</th>
+                        <th style = 'width: 350px;'>Years of Term</th>
+                        <th style = 'width: 350px;'>Year Started</th>
+                        <th style = 'width: 150px;'>Status</th>
+                        <th style = 'width: 250px;'>ID Card</th>
+                        <th style = 'width: 550px;'>Action</th>
                         </tr>";
 
                         $result = mysqli_query($cn,$sql);
@@ -205,7 +206,7 @@
                                 
                                 echo "<td>" . $row['officialid'] . " </td> ";
                                 echo "<td>" . $row['position'] . " </td> ";
-                                echo '<td>'. $disp['lastname'].' ' . $disp['middlename'] . ' ' . $disp['firstname'] . '</td>';
+                                echo '<td>'. $row['lastname'].' ' . $row['middlename'] . ' ' . $row['firstname'] . '</td>';
                                 echo "<td>" . $row['gender'] . " </td> ";
                                 echo "<td>" . $row['birthdate'] . "  </td> ";
                                 echo "<td>" . $row['civilstatus'] . "</td> ";
@@ -213,14 +214,26 @@
                                 echo "<td>" . $row['contact'] . "</td> ";
                                 echo "<td>" . $row['termyears'] . "</td> ";
                                 echo "<td>" . $row['yearstarted'] . "</td> ";
-                                echo "<td><a target='_blank' class='btn btn-light' style='width:100%;border:1px solid black;color:black' href='".$row['idcard']."'>View Image</a></td> ";
 
                                 if ($row['status'] == "0")
                                 {
-                                	echo "<td><a class='btn btn-warning' style='width:100%;border:1px solid black;color:black' href='action.php?id=" . $row['officialid'] . "'>Archive</a></td> ";
+                                	$stat = "Active";
                                 }
                                 else {
-                                	echo "<td><a class='btn btn-warning' style='width:100%;border:1px solid black;color:black' href='action.php?id=" . $row['residentid'] . "'>Restore</a></td> ";
+                                	$stat = "Archived";
+                                }
+
+                                echo "<td>" . $stat . "</td> ";
+                                echo "<td><a target='_blank' class='btn btn-light' style='width:100%;border:1px solid black;color:black' href='".$row['idcard']."'>View Image</a></td> ";
+
+                                echo "<td><a class='btn btn-success' style='width:49%;border:1px solid black;color:black' href='viewOfficial.php?id=" . $row['officialid'] . "'>Edit</a> ";
+
+                                if ($row['status'] == "0")
+                                {
+                                	echo "<a class='btn btn-warning' style='width:49%;border:1px solid black;color:black' href='archiveOfficials.php?id=" . $row['officialid'] . "'>Archive</a></td> ";
+                                }
+                                else {
+                                	echo "<a class='btn btn-warning' style='width:49%;border:1px solid black;color:black' href='activateOfficials.php?id=" . $row['officialid'] . "'>Restore</a></td> ";
                                 }
 
                 	}

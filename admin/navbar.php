@@ -41,7 +41,7 @@ include '../condb.php';
                                  <li class="has-dropdown active">
                                     <a href="#" data-toggle="dropdown" class="dropdown-toggle menu-item">My Account</a>&nbsp;
                                     <ul class="dropdown-menu">
-                                        <li><a href="viewaccount.html">View Account</a></li>
+                                        <li><a href="viewAccount.php">View Account</a></li>
                                         <li><a href="../index.php">Logout</a></li>
                                     </ul>
                                 </li> 

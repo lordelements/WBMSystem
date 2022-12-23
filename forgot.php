@@ -26,27 +26,56 @@
 		</div>
 		</nav>
 	</header>
-		<section id="heroSearch" class="hero-search mtop-0 pt-0 pb-0">
+		<section id="heroSearch" class="hero-search mtop-100 pt-0 pb-0">
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<div class="slider--content">
-						<div class="text-center" style="margin-top: -110px;">
-							<div class="row"><br><br>
-								<div class="column1" style="width:400px;background: white;padding-top:150px;padding-bottom:150px;padding-left:20px;padding-right:20px;border-radius: 10px;display:inline;float:left;margin-left:-30px">
-									<h3 style="color:black">Barangay Certificate</h3><br>
-									<a target='_blank' class='btn btn-light' style='width:100%;border:1px solid black;color:black' href='../brgycert.docx'>Download File</a>
-								</div>
-								<div class="column2" style="width:400px;background: white;padding-top:150px;padding-bottom:150px;padding-left:20px;padding-right:20px;border-radius: 10px;display:inline;float:left;margin-left:10px">
-									<h3 style="color:black">Barangay Business Permit</h3><br>
-									<a target='_blank' class='btn btn-light' style='width:100%;border:1px solid black;color:black' href='../brgycert.docx'>Download File</a>
-								</div>
-								<div class="column3" style="width:400px;background: white;padding-top:150px;padding-bottom:150px;padding-left:20px;padding-right:20px;border-radius: 10px;display:inline;float:left;margin-left:10px">
-									<h3 style="color:black">Certificate of Indigency</h3><br>
-									<a target='_blank' class='btn btn-light' style='width:100%;border:1px solid black;color:black' href='../brgycert.docx'>Download File</a>
+						<form class="mb-0" method="post" action="funcReset.php" enctype="multipart/form-data">
+							<div class="form-box search-properties">
+								<div class="row">
+								<center><h3>Forgot Password</h3>
+									<div class="col-xs-12 col-sm-6 col-md-4">
+										<div class="form-group">
+											<div class="select--box">
+												<input type="text" name="lname" class="form-control" id="select-location" placeholder="Last Name" required>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-4">
+										<div class="form-group">
+											<div class="select--box">
+												<input type="text" name="mname" class="form-control" id="select-location" placeholder="Middle Name">
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-4">
+										<div class="form-group">
+											<div class="select--box">
+												<input type="text" name="fname" class="form-control" id="select-location" placeholder="First Name" required>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-6">
+										<div class="form-group">
+											<div class="select--box">
+												<input type="text" name="email" class="form-control" id="select-email" placeholder="Email Address" required>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-6">
+										<div class="form-group">
+											<div class="select--box">
+												<input type="text" name="contact" class="form-control" id="select-contact" placeholder="Contact Number" required>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-12">
+										<input type="submit" value="Reset Password" name="submit" class="btn btn--primary btn--block">
+									</div>
 								</div>
 							</div>
-						</div>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -54,17 +83,17 @@
 		<div class="carousel slider-navs" data-slide="1" data-slide-rs="1" data-autoplay="true" data-nav="true" data-dots="false" data-space="0" data-loop="true" data-speed="800">
 			<div class="slide--item bg-overlay bg-overlay-dark3">
 				<div class="bg-section">
-					<img src="../bg1.jpg" alt="background">
+					<img src="bg1.jpg" alt="background">
 				</div>
 			</div>
 			<div class="slide--item bg-overlay bg-overlay-dark3">
 				<div class="bg-section">
-					<img src="../bg2.jpg" alt="background">
+					<img src="bg2.jpg" alt="background">
 				</div>
 			</div>
 			<div class="slide--item bg-overlay bg-overlay-dark3">
 				<div class="bg-section">
-					<img src="../bg3.jpg" alt="background">
+					<img src="bg3.jpg" alt="background">
 				</div>
 			</div>
 		</div>

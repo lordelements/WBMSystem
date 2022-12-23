@@ -26,27 +26,80 @@
 		</div>
 		</nav>
 	</header>
-		<section id="heroSearch" class="hero-search mtop-0 pt-0 pb-0">
+		<section id="heroSearch" class="hero-search mtop-100 pt-0 pb-0">
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<div class="slider--content">
-						<div class="text-center" style="margin-top: -110px;">
-							<div class="row"><br><br>
-								<div class="column1" style="width:400px;background: white;padding-top:150px;padding-bottom:150px;padding-left:20px;padding-right:20px;border-radius: 10px;display:inline;float:left;margin-left:-30px">
-									<h3 style="color:black">Barangay Certificate</h3><br>
-									<a target='_blank' class='btn btn-light' style='width:100%;border:1px solid black;color:black' href='../brgycert.docx'>Download File</a>
-								</div>
-								<div class="column2" style="width:400px;background: white;padding-top:150px;padding-bottom:150px;padding-left:20px;padding-right:20px;border-radius: 10px;display:inline;float:left;margin-left:10px">
-									<h3 style="color:black">Barangay Business Permit</h3><br>
-									<a target='_blank' class='btn btn-light' style='width:100%;border:1px solid black;color:black' href='../brgycert.docx'>Download File</a>
-								</div>
-								<div class="column3" style="width:400px;background: white;padding-top:150px;padding-bottom:150px;padding-left:20px;padding-right:20px;border-radius: 10px;display:inline;float:left;margin-left:10px">
-									<h3 style="color:black">Certificate of Indigency</h3><br>
-									<a target='_blank' class='btn btn-light' style='width:100%;border:1px solid black;color:black' href='../brgycert.docx'>Download File</a>
+						
+						<?php 
+
+						$resid = $_GET['id'];
+
+						$result = mysqli_query ($cn, "SELECT * FROM residents WHERE residentid = '$resid'");
+						$row = mysqli_fetch_assoc($result);
+
+						echo '
+						<form class="mb-0" method="post" action="updResidents.php" enctype="multipart/form-data">
+						<input type="hidden" name="resid" value="'.$resid.'">
+							<div class="form-box search-properties">
+								<div class="row"><br>
+									<div class="col-xs-12 col-sm-6 col-md-4">
+										<div class="form-group">
+											<div class="select--box">
+												<input type="text" name="lastname" class="form-control" id="select-location" value="'.$row['lastname'].'" style="color:black;" required>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-4">
+										<div class="form-group">
+											<div class="select--box">
+												<input type="text" name="middlename" class="form-control" id="select-location" value="'.$row['middlename'].'" style="color:black;">
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-4">
+										<div class="form-group">
+											<div class="select--box">
+												<input type="text" name="firstname" class="form-control" id="select-location" value="'.$row['firstname'].'" style="color:black;" required>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-6">
+										<div class="form-group">
+											<div class="select--box">
+												<input type="date" name="birthdate" class="form-control" id="select-birthdate" value="'.$row['birthdate'].'" style="color:black;">
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-6">
+										<div class="form-group">
+											<div class="select--box">
+												<input type="text" name="civilstatus" class="form-control" id="select-civilstatus" value="'.$row['civilstatus'].'" style="color:black;">
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-12">
+										<div class="form-group">
+											<div class="select--box">
+												<input type="text" name="address" class="form-control" id="select-address" value="'.$row['address'].'" style="color:black;" required>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-6">
+										<div class="form-group">
+											<div class="select--box">
+												<input type="text" name="contact" class="form-control" id="select-contact" value="'.$row['contact'].'" style="color:black;" required>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-6">
+										<input type="submit" value="Update Records" name="submit" class="btn btn--primary btn--block">
+									</div>
 								</div>
 							</div>
-						</div>
+						</form> ';
+						?>
 					</div>
 				</div>
 			</div>

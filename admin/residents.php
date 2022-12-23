@@ -69,7 +69,7 @@
 											</div>
 										</div>
 									</div>
-									<div class="col-xs-12 col-sm-6 col-md-6">
+									<div class="col-xs-12 col-sm-6 col-md-4">
 										<div class="form-group">
 											<div class="select--box">
 												<input type="date" name="birthdate" class="form-control" id="select-birthdate" placeholder="Birthdate">
@@ -159,14 +159,15 @@
                         <thead>
                         <tr style = 'height: 30px;'>
                         <th style = 'width: 180px;'>Resident ID</th>
-                        <th style = 'width: 550px;'>Name</th>
+                        <th style = 'width: 350px;'>Name</th>
                         <th style = 'width: 150px;'>Gender</th>
                         <th style = 'width: 150px;'>Birthdate</th>
-                        <th style = 'width: 300px;'>CivilStatus</th>
-                        <th style = 'width: 300px;'>Address</th>
-                        <th style = 'width: 300px;'>Contact</th>
-                        <th style = 'width: 300px;'>ID Card</th>
-                        <th style = 'width: 150px;'>Action</th>
+                        <th style = 'width: 150px;'>Civil Status</th>
+                        <th style = 'width: 350px;'>Address</th>
+                        <th style = 'width: 150px;'>Contact</th>
+                        <th style = 'width: 100px;'>Status</th>
+                        <th style = 'width: 200px;'>ID Card</th>
+                        <th style = 'width: 450px;'>Action</th>
                         </tr>";
 
                         $result = mysqli_query($cn,$sql);
@@ -180,20 +181,32 @@
                                 echo "<tr>";
                                 
                                 echo "<td>" . $row['residentid'] . " </td> ";
-                                echo '<td>'. $disp['lastname'].' ' . $disp['middlename'] . ' ' . $disp['firstname'] . '</td>';
+                                echo '<td>'. $row['lastname'].' ' . $row['middlename'] . ' ' . $row['firstname'] . '</td>';
                                 echo "<td>" . $row['gender'] . " </td> ";
                                 echo "<td>" . $row['birthdate'] . "  </td> ";
                                 echo "<td>" . $row['civilstatus'] . "</td> ";
                                 echo "<td>" . $row['address'] . "</td> ";
                                 echo "<td>" . $row['contact'] . "</td> ";
-                                echo "<td><a target='_blank' class='btn btn-light' style='width:100%;border:1px solid black;color:black' href='".$row['idcard']."'>View Image</a></td> ";
 
                                 if ($row['status'] == "0")
                                 {
-                                	echo "<td><a class='btn btn-warning' style='width:100%;border:1px solid black;color:black' href='action.php?id=" . $row['residentid'] . "'>Archive</a></td> ";
+                                	$stat = "Active";
                                 }
                                 else {
-                                	echo "<td><a class='btn btn-warning' style='width:100%;border:1px solid black;color:black' href='action.php?id=" . $row['residentid'] . "'>Restore</a></td> ";
+                                	$stat = "Archived";
+                                }
+
+                                echo "<td>" . $stat . "</td> ";
+                                echo "<td><a target='_blank' class='btn btn-light' style='width:100%;border:1px solid black;color:black' href='".$row['idcard']."'>View Image</a></td> ";
+
+                                echo "<td><a class='btn btn-success' style='width:49%;border:1px solid black;color:black' href='viewResident.php?id=" . $row['residentid'] . "'>Edit</a> ";
+
+                                if ($row['status'] == "0")
+                                {
+                                	echo "<a class='btn btn-warning' style='width:49%;border:1px solid black;color:black' href='archiveResidents.php?id=" . $row['residentid'] . "'>Archive</a></td> ";
+                                }
+                                else {
+                                	echo "<a class='btn btn-warning' style='width:49%;border:1px solid black;color:black' href='activateResidents.php?id=" . $row['residentid'] . "'>Restore</a></td> ";
                                 }
 
                 	}

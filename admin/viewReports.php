@@ -31,22 +31,81 @@
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<div class="slider--content">
-						<div class="text-center" style="margin-top: -110px;">
-							<div class="row"><br><br>
-								<div class="column1" style="width:400px;background: white;padding-top:150px;padding-bottom:150px;padding-left:20px;padding-right:20px;border-radius: 10px;display:inline;float:left;margin-left:-30px">
-									<h3 style="color:black">Barangay Certificate</h3><br>
-									<a target='_blank' class='btn btn-light' style='width:100%;border:1px solid black;color:black' href='../brgycert.docx'>Download File</a>
-								</div>
-								<div class="column2" style="width:400px;background: white;padding-top:150px;padding-bottom:150px;padding-left:20px;padding-right:20px;border-radius: 10px;display:inline;float:left;margin-left:10px">
-									<h3 style="color:black">Barangay Business Permit</h3><br>
-									<a target='_blank' class='btn btn-light' style='width:100%;border:1px solid black;color:black' href='../brgycert.docx'>Download File</a>
-								</div>
-								<div class="column3" style="width:400px;background: white;padding-top:150px;padding-bottom:150px;padding-left:20px;padding-right:20px;border-radius: 10px;display:inline;float:left;margin-left:10px">
-									<h3 style="color:black">Certificate of Indigency</h3><br>
-									<a target='_blank' class='btn btn-light' style='width:100%;border:1px solid black;color:black' href='../brgycert.docx'>Download File</a>
+						<?php 
+
+						$repid = $_GET['id'];
+
+						$result = mysqli_query ($cn, "SELECT * FROM reports WHERE reportid = '$repid'");
+						$row = mysqli_fetch_assoc($result);
+
+						echo '
+						<form class="mb-0" method="post" action="updReports.php" enctype="multipart/form-data" style="margin-top: -100px;">
+						<input type="hidden" name="repid" value="'.$repid.'">
+							<div class="form-box search-properties">
+								<div class="row">
+									<div class="col-xs-12 col-sm-6 col-md-4">
+										<div class="form-group">
+											<div class="select--box">
+												<input type="text" name="incident" class="form-control" id="select-incident" value="'.$row['incident'].'" style="color:black;" required>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-4">
+										<div class="form-group">
+											<div class="select--box">
+												<input type="text" name="incidentplace" class="form-control" id="select-incidentplace" value="'.$row['incidentplace'].'" style="color:black;" required>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-4">
+										<div class="form-group">
+											<div class="select--box">
+												<input type="text" name="complainant" class="form-control" id="select-complainant" value="'.$row['complainant'].'" style="color:black;">
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-4">
+										<div class="form-group">
+											<div class="select--box">
+												<input type="text" name="complainee" class="form-control" id="select-complainee" value="'.$row['complainee'].'" style="color:black;" required>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-4">
+										<div class="form-group">
+											<div class="select--box">
+												<input type="text" name="witness1" class="form-control" id="select-witness1" value="'.$row['witness1'].'" style="color:black;" required>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-4">
+										<div class="form-group">
+											<div class="select--box">
+												<input type="text" name="witness2" class="form-control" id="select-witness2" value="'.$row['witness2'].'" style="color:black;">
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-12">
+										<div class="form-group">
+											<div class="select--box">
+												<input type="text" name="narrative" class="form-control" id="select-narrative" value="'.$row['narrative'].'" style="color:black;" required>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-12">
+										<div class="form-group">
+											<div class="select--box">
+												<input type="datetime-local" name="dateandtime" class="form-control" id="select-dateandtime" value="'.$row['dateandtime'].'" style="color:black;" required>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-12">
+										<input type="submit" value="Update Records" name="submit" class="btn btn--primary btn--block">
+									</div>
 								</div>
 							</div>
-						</div>
+						</form>';
+						?>
 					</div>
 				</div>
 			</div>

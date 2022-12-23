@@ -62,6 +62,6 @@ $res = mysqli_query($cn, "INSERT INTO officials (position, lastname, middlename,
     echo '<script language="javascript">alert("'.$msg.'");</script>';
     echo "<script>document.location = '$url'</script>";
 	}
-	//myAlert("Record added successfully!", "../admin/officials.php");
+	myAlert("Record added successfully!", "../admin/officials.php");
 
 ?>
