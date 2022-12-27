@@ -16,6 +16,27 @@ $address = $_POST['address'];
 $contact = $_POST['contact'];
 
 $full = $lastname . " " . $middlename . " " . $firstname;
+$randomizer = rand(100000,999999);
+
+/*"Email": "andrianelemento08@gmail.com",
+"Password": "24681357 ",
+"Recipients": [ "$contact"],
+"Message": "If requested, your OTP is.",
+"ApiCode": "TR-ANDRI265598_9PE3F",
+"SenderId": "ITEXMO SMS"*/
+
+function itexmo($number,$message,$apicode,$passwd)
+{
+	$ch = curl_init();
+	$itexmo = array('1' => $number, '2' => $message, '3' => $apicode, 'passwd' => $passwd);
+	curl_setopt($ch, CURLOPT_URL,"https://www.itexmo.com/php_api/api.php");
+	curl_setopt($ch, CURLOPT_POST, 1);
+	curl_setopt($ch, CURLOPT_POSTFIELDS,http_build_query($itexmo));
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	return curl_exec ($ch);
+	curl_close ($ch); 
+
+}
 
 //Initiation of files uploaded by the user
 	$fileName = $_FILES['myfile']['name'];

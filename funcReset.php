@@ -29,5 +29,10 @@ if($row<>0)
 	}
 	else
 	{
-		header("location:index.php?status=Failed");
-	}
+		function myAlert1($msg, $url){
+			echo '<script language="javascript">alert("'.$msg.'");</script>';
+			echo "<script>document.location = '$url'</script>";
+			}
+			myAlert1("Information does not match.", "index.php");
+		}
+	// }
